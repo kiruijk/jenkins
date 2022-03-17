@@ -53,14 +53,19 @@ if [ $? -ne 0 ]
 then
 echo " Failed to install the latest version of jenkins.."
 sleep 2
+exit 5
+fi
+
+#Starting and enabling Jenkins
+echo "Starting and enabling jenkins"
+sleep 2
 sudo systemctl start jenkins 
 sudo systemctl enable jenkins 
 sudo systemctl status jenkins 
-sleep 3
-fi
+
 
 #Adjusting firewall
-echo Adjusting firewall..."
+echo "Adjusting firewall..."
 sleep 2
 sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp 
 sudo firewall-cmd --reload 
