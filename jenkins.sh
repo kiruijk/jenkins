@@ -70,5 +70,5 @@ sleep 2
 sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp 
 sudo firewall-cmd --reload 
 
-echo "To setup the jenkins page on your browser, use the IP address below followed by the port 8080:"
+echo "To setup the jenkins page on your browser, use the IP address below followed by the port ':8080':"
 hostname -I |awk '{print$2}'
