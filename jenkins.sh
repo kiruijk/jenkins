@@ -29,14 +29,14 @@ fi
 #Enabling the Jenkins repository
 echo "Enabling the jenkins repository..."
 sleep 2
-sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo 
 
 if [ $? -ne 0 ]
 then
 sudo yum install wget -y
 sleep 1
 fi
-sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo 
 sudo sed -i 's/gpgcheck=1/gpgcheck=0/g' /etc/yum.repos.d/jenkins.repo -y
 
 if [ $? -ne 0 ]
