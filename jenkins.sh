@@ -37,7 +37,7 @@ sudo yum install wget -y
 sleep 1
 fi
 sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo 
-sudo sed -i 's/gpgcheck=1/gpgcheck=0/g' /etc/yum.repos.d/jenkins.repo -y
+sudo sed -i 's/gpgcheck=1/gpgcheck=0/g' /etc/yum.repos.d/jenkins.repo 
 
 if [ $? -ne 0 ]
 then
@@ -53,15 +53,17 @@ if [ $? -ne 0 ]
 then
 echo " Failed to install the latest version of jenkins.."
 sleep 2
-sudo systemctl start jenkins -y
-sudo systemctl status jenkins -y
-sudo systemctl enable jenkins -y
+sudo systemctl start jenkins 
+sudo systemctl enable jenkins 
+sudo systemctl status jenkins 
+sleep 3
 fi
 
 #Adjusting firewall
 echo Adjusting firewall..."
 sleep 2
-sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp -y
-sudo firewall-cmd --reload -y
+sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp 
+sudo firewall-cmd --reload 
 
-echo "To set up the jenkins page on your browser, type the IP address below followed by the port 8080 as shown below:hostname -I |awk -F '{print$2}':8080
+echo "To setup the jenkins page on your browser, use the IP address below followed by the port 8080 as shown below:"
+hostname -I |awk -F '{print$2}':8080
